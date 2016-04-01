@@ -1,0 +1,107 @@
+var LeaderBoard = React.createClass({
+  getInitialState: function() {
+    return {
+      recent: [],
+      alltime: [],
+      display: 'recent'
+    }
+  },
+  
+  componentDidMount: function() {
+    $.get('http://fcctop100.herokuapp.com/api/fccusers/top/recent', function(data) {
+      this.setState({
+        recent: data
+      });
+    }.bind(this));
+    
+    $.get('http://fcctop100.herokuapp.com/api/fccusers/top/alltime', function(data) {
+      this.setState({
+        alltime: data
+      });
+    }.bind(this));
+  },
+  
+  showRecent: function() {
+    this.setState({
+      display: 'recent'
+    });
+  },
+  
+  showAllTime: function() {
+    this.setState({
+      display: 'alltime'
+    });
+  },
+  
+  render: function() {
+    return(
+      <table className="table table-striped table-bordered table-hover table-condensed">
+        <thead>
+          <tr>
+            <th colSpan="4" className=" borwn title"><h2>Leaderboard</h2></th>
+          </tr>
+          <tr>
+            <th className="title"><h4>#</h4></th>
+            <th className="title"><h4>Camper Name</h4></th>
+            <th className="title">
+              <a onClick={this.showRecent}>
+              <h4>Points in Past 30 Days 
+                <span
+                  className={[
+                    'glyphicon', this.state.display === 'recent' ? 'glyphicon-chevron-down' : ''].join(' ')} />
+              </h4>
+            </a>
+          </th>
+          <th className="title">
+            <a onClick={this.showAllTime}>
+              <h4>All Time Points 
+                <span
+                  className={[
+                    'glyphicon', this.state.display === 'alltime' ? 'glyphicon-chevron-down' : ''].join(' ')} />
+              </h4>
+            </a>
+          </th>
+        </tr>
+        </thead>
+        
+        <TableRows data={this.state[this.state.display]} />
+      </table>
+    )
+  }
+});
+
+var Row = React.createClass({
+  render: function() {
+    return (
+      <tr>
+        <td className="data">{this.props.id}</td>
+        <td>
+          <a target="_blank" href={"https://freecodecamp.com/" + this.props.data.username}>
+            <img className="photo" src={this.props.data.img} />
+            &nbsp; {this.props.data.username}
+          </a>
+        </td>
+        <td className="data">{this.props.data.recent}</td>
+        <td className="data">{this.props.data.alltime}</td>
+      </tr>
+    );
+  }
+});
+
+var TableRows = React.createClass({
+  render: function() {
+    var rows = this.props.data.map(function (row, index) {
+       return <Row key={index} id={index + 1} data={row} />;
+    });
+    
+    return (
+      <tbody>
+        {rows}
+      </tbody>
+    );
+  }
+});
+ReactDOM.render(
+  <LeaderBoard />,
+  document.getElementById('content')
+);

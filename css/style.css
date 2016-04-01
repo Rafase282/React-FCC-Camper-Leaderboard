@@ -1,0 +1,44 @@
+.title {
+  text-align: center;
+  font-weight: bold;
+}
+
+.data {
+  text-align: center;
+  margin-top: 10px;
+}
+
+a {
+  color: teal;
+}
+
+.borwn {
+  background-color: #403121;
+  color: white;
+}
+
+.table {
+  margin-top: 5%;
+  margin-left: 10%;
+  margin-right: 10%;
+  width: 80%;
+  background-color: white;
+}
+
+.photo {
+  width: 50px;
+  border: solid;
+}
+
+body {
+  background-color: Teal;
+}
+
+.glyphicon-chevron-down {
+  display: inline;
+}
+
+span {
+  cursor: hand;
+  cursor: pointer;
+}
