@@ -12,13 +12,13 @@ var LeaderBoard = React.createClass({
   },
 
   componentDidMount: function componentDidMount() {
-    $.get('http://fcctop100.herokuapp.com/api/fccusers/top/recent', function (data) {
+    $.get('https://fcctop100.herokuapp.com/api/fccusers/top/recent', function (data) {
       this.setState({
         recent: data
       });
     }.bind(this));
 
-    $.get('http://fcctop100.herokuapp.com/api/fccusers/top/alltime', function (data) {
+    $.get('https://fcctop100.herokuapp.com/api/fccusers/top/alltime', function (data) {
       this.setState({
         alltime: data
       });
