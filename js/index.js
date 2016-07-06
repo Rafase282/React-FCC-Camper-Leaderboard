@@ -86,10 +86,10 @@ var LeaderBoard = React.createClass({
               { onClick: this.showRecent },
               React.createElement(
                 'h4',
-                null,
-                'Points in Past 30 Days',
+                { className: 'cliclTitle' },
+                'Points in Past 30 Days  ',
                 React.createElement('span', {
-                  className: ['glyphicon', this.state.display === 'recent' ? 'glyphicon-chevron-down' : ''].join(' ') })
+                  className: ['glyphicon', this.state.display === 'recent' ? 'glyphicon glyphicon-check' : 'glyphicon glyphicon-unchecked'].join(' ') })
               )
             )
           ),
@@ -101,10 +101,10 @@ var LeaderBoard = React.createClass({
               { onClick: this.showAllTime },
               React.createElement(
                 'h4',
-                null,
-                'All Time Points',
+                { className: 'cliclTitle' },
+                'All Time Points  ',
                 React.createElement('span', {
-                  className: ['glyphicon', this.state.display === 'alltime' ? 'glyphicon-chevron-down' : ''].join(' ') })
+                  className: ['glyphicon', this.state.display === 'alltime' ? 'glyphicon glyphicon-check' : 'glyphicon glyphicon-unchecked'].join(' ') })
               )
             )
           )

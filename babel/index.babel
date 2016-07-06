@@ -45,19 +45,19 @@ var LeaderBoard = React.createClass({
             <th className="title"><h4>Camper Name</h4></th>
             <th className="title">
               <a onClick={this.showRecent}>
-              <h4>Points in Past 30 Days 
+              <h4 className='cliclTitle'>Points in Past 30 Days &nbsp;
                 <span
                   className={[
-                    'glyphicon', this.state.display === 'recent' ? 'glyphicon-chevron-down' : ''].join(' ')} />
+                    'glyphicon', this.state.display === 'recent' ? 'glyphicon glyphicon-check' : 'glyphicon glyphicon-unchecked'].join(' ')} />
               </h4>
             </a>
           </th>
           <th className="title">
             <a onClick={this.showAllTime}>
-              <h4>All Time Points 
+              <h4 className='cliclTitle'>All Time Points &nbsp;
                 <span
                   className={[
-                    'glyphicon', this.state.display === 'alltime' ? 'glyphicon-chevron-down' : ''].join(' ')} />
+                    'glyphicon', this.state.display === 'alltime' ? 'glyphicon glyphicon-check' : 'glyphicon glyphicon-unchecked'].join(' ')} />
               </h4>
             </a>
           </th>
